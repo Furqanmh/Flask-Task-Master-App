@@ -83,4 +83,4 @@ def edit(id:int):
 
 #Runs and debugs app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
