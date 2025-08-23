@@ -33,8 +33,13 @@ def index():
     #Add a task
     if request.method == "POST":
         current_task = request.form['content']
+        
+        if not current_task:
+            tasks = MyTask.query.order_by(MyTask.created).all()
+            return render_template("index.html", tasks = tasks, error = "Please enter a task!")
+            
         new_task = MyTask(content = current_task)
-
+        
         try:
             db.session.add(new_task)
             db.session.commit()
